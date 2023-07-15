@@ -21,5 +21,5 @@ form.addEventListener('submit', function(e) {
   console.log('省份：', province);
 
   // 跳转到另一个页面
-  // window.location.href = 'index.html';
+  window.location.href = 'index.html';
 });
