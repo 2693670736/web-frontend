@@ -1,121 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>高等院校大数据分析</title>
-  <link rel="stylesheet" href="css/index.css" />
+  <title>高考志愿推荐系统</title>
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<!-- 头部 -->
-<header>
-  <h1>高等院校大数据分析</h1>
-  <div class="show-time"></div>
-  <script>
-    var t = null;
-    t = setTimeout(time, 1000); //开始运行
-    function time() {
-      clearTimeout(t); //清除定时器
-      dt = new Date();
-      var y = dt.getFullYear();
-      var mt = dt.getMonth() + 1;
-      var day = dt.getDate();
-      var h = dt.getHours(); //获取时
-      var m = dt.getMinutes(); //获取分
-      var s = dt.getSeconds(); //获取秒
-      document.querySelector(".show-time").innerHTML =
-              "当前时间：" +
-              y +
-              "年" +
-              mt +
-              "月" +
-              day +
-              "日-" +
-              h +
-              "时" +
-              m +
-              "分" +
-              s +
-              "秒";
-      t = setTimeout(time, 1000); //设定定时器，循环运行
-    }
-  </script>
-</header>
+  <header>
+    <div class="user-icon">User Icon</div>
+  </header>
 
-<!-- 页面主体 -->
-<section class="mainbox">
-  <!-- 左侧盒子 -->
-  <div class="column">
-    <div class="panel bar">
-      <h2>柱形图</h2>
-      <!-- 图表放置盒子 -->
-      <div class="chart"></div>
-      <!-- 伪元素绘制盒子下边角 -->
-      <div class="panel-footer"></div>
-    </div>
-    <div class="panel line">
-      <h2>折线图
-        <a class="a-active" href="javascript:;">2020</a>
-        <a href="javascript:;">2021</a>
-      </h2>
-      <div class="chart"></div>
-      <div class="panel-footer"></div>
-    </div>
-    <div class="panel pie">
-      <h2>饼形图</h2>
-      <div class="chart"></div>
-      <div class="panel-footer"></div>
+  <div class="system-name">
+    <h1>高考志愿推荐系统</h1>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="搜索学校">
+    <button id="recommendBtn">智能推荐</button>
+  </div>
+
+  <div class="filter-section">
+    <h2>学校筛选条件</h2>
+    <div class="filters">
+      <select id="provinceFilter">
+        <option value="">选择省份</option>
+        <!-- 省份选项 -->
+      </select>
+      <label>
+        <input type="checkbox" id="is985Filter"> 985
+      </label>
+      <label>
+        <input type="checkbox" id="is211Filter"> 211
+      </label>
     </div>
   </div>
-  <!-- 中间盒子 -->
-  <div class="column">
-    <!-- 头部 no模块 -->
-    <div class="no">
-      <div class="no-hd">
-        <ul>
-          <li>000</li>
-          <li>000</li>
-        </ul>
-      </div>
-      <div class="no-bd">
-        <ul>
-          <li>高考分数</li>
-          <li>省控线</li>
-        </ul>
+
+  <div class="university-list">
+    <!-- 学校列表 -->
+    <div class="university-item">
+      <img src="university-icon.png" alt="University Icon">
+      <div class="university-info">
+        <h3>学校名称</h3>
+        <p>所在省份</p>
+        <p>985：是 / 211：是</p>
+        <p>推荐指数：xxx</p>
+        <p>最低分数线：xxx</p>
+        <p>招生人数：xxx</p>
+        <a href="school-details.html">查看详情</a>
       </div>
     </div>
-    <!-- map模块 -->
-    <div class="map">
-      <div class="map1"></div>
-      <div class="map2"></div>
-      <div class="map3"></div>
-      <div class="chart"></div>
-    </div>
   </div>
-  <!-- 右侧盒子 -->
-  <div class="column">
-    <div class="panel bar2">
-      <h2>柱形图</h2>
-      <div class="chart"></div>
-      <div class="panel-footer"></div>
-    </div>
-    <div class="panel line2">
-      <h2>折线图分数变化</h2>
-      <div class="chart"></div>
-      <div class="panel-footer"></div>
-    </div>
-    <div class="panel pie2">
-      <h2>生源分布</h2>
-      <div class="chart"></div>
-      <div class="panel-footer"></div>
-    </div>
-  </div>
-</section>
 
-<script src="js/flexible.js"></script>
-<script src="js/echarts.min.js"></script>
-<script src="js/jquery.js"></script>
-<!-- 引入china.js 完成地图模块 -->
-<script src="js/index.js"></script>
+  <!-- <script src="script.js"></script> -->
 </body>
 </html>

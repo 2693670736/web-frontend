@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>高考志愿推荐系统</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>高考志愿推荐系统</h1>
+        <form id="studentForm">
+          <div class="form-row">
+            <label for="subject">文理科：</label>
+            <select id="subject" name="subject">
+              <option value="文科">文科</option>
+              <option value="理科">理科</option>
+            </select>
+          </div>
+    
+          <div class="form-row">
+            <label for="score">高考分数：</label>
+            <input type="text" id="score" name="score" placeholder="请输入高考分数">
+          </div>
+    
+          <div class="form-row">
+            <label for="rank">高考排名：</label>
+            <input type="text" id="rank" name="rank" placeholder="请输入高考排名">
+          </div>
+    
+          <div class="form-row">
+            <label for="province">省份：</label>
+            <select id="province" name="province">
+              <option value="北京市">北京市</option>
+              <option value="上海市">上海市</option>
+              <option value="广东省">广东省</option>
+              <!-- 其他省份选项 -->
+            </select>
+          </div>
+    
+          <div class="form-row">
+            <input type="submit" value="提交">
+          </div>
+        </form>
+      </div>
+
+  <script src="./js/login.js"></script>
+</body>
+</html>
