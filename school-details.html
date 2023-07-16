@@ -46,23 +46,41 @@
 <section class="mainbox">
   <!-- 左侧盒子 -->
   <div class="column">
-    <div class="panel bar">
-      <h2>柱形图</h2>
+    <style>
+      .panel.bar {
+        display: flex;
+      }
+  
+      .panel.bar .chart {
+        flex: 1;
+        width: 150px;
+        height: 150px;
+        margin-top: 30px;
+        margin-left: -70px;
+       
+      }
+    </style>
+     <div class="panel bar ">
+      <h2>升学信息</h2> 
       <!-- 图表放置盒子 -->
-      <div class="chart"></div>
+      <div class="chart chart1"></div>
+    <div class="chart chart2"></div>
+    <div class="chart chart3"></div>
       <!-- 伪元素绘制盒子下边角 -->
       <div class="panel-footer"></div>
     </div>
+
     <div class="panel line">
-      <h2>折线图
-        <a class="a-active" href="javascript:;">2020</a>
-        <a href="javascript:;">2021</a>
+      <h2>三年分数线
+        <a class="a-active" href="javascript:;">文科</a>
+        <a href="javascript:;">理科</a>
       </h2>
       <div class="chart"></div>
       <div class="panel-footer"></div>
     </div>
+
     <div class="panel pie">
-      <h2>饼形图</h2>
+      <h2>男女比例</h2>
       <div class="chart"></div>
       <div class="panel-footer"></div>
     </div>
@@ -84,26 +102,97 @@
         </ul>
       </div>
     </div>
-    <!-- map模块 -->
-    <div class="map">
-      <div class="map1"></div>
-      <div class="map2"></div>
-      <div class="map3"></div>
-      <div class="chart"></div>
+    <!-- 中间模块 -->
+    <div class="column">
+
+
+       <!-- <div class="panel "> -->
+      <!-- <h2>学校简介</h2>  -->
+      <div class="panel-footer"></div>
+      </div>
+      <style>
+      
+        .transparent-textbox {
+          width: 500px; /* 设置文本框宽度 */
+          height: 180px; /* 设置文本框高度 */
+          padding: 10px;
+          border: none;
+          background-color: transparent;
+          color: white; /* 设置字体颜色为白色 */
+          font-family: monospace; /* 使用等宽字体，确保每个字符宽度相同 */
+          overflow: hidden; /* 隐藏溢出部分 */
+          resize: none; /* 禁止调整文本框大小 */
+          white-space: pre-wrap; /* 保留换行符 */
+          word-wrap: break-word; /* 允许文字到达边缘自动换行 */
+          position: absolute; /* 添加绝对定位 */
+          top: 50%; /* 将文本框定位在容器的中心 */
+          left: 50%; /* 将文本框定位在容器的中心 */
+          transform: translate(-50%, -50%); /* 居中对齐 */
+        }
+      </style>
+    </head>
+    
+    <body>
+      <div class="panel">
+        <h2>学校简介
+        <textarea id="transparent-textbox" class="transparent-textbox" placeholder="透明文本框"></textarea>
+      </div>
+
+
+
+      <div class="panel line3">
+        <h2>热门专业
+          <a class="a-active" href="javascript:;">文科</a>
+          <a href="javascript:;">理科</a>
+        </h2>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+      </div>
+      
+
     </div>
   </div>
+
+
+
   <!-- 右侧盒子 -->
   <div class="column">
+    <style>
+      
+      .transparents-textbox {
+        width: 360px; /* 设置文本框宽度 */
+        height: 200px; /* 设置文本框高度 */
+        padding: 10px;
+        border: none;
+        background-color: transparent;
+        color: white; /* 设置字体颜色为白色 */
+        font-family: monospace; /* 使用等宽字体，确保每个字符宽度相同 */
+        overflow: hidden; /* 隐藏溢出部分 */
+        resize: none; /* 禁止调整文本框大小 */
+        white-space: pre-wrap; /* 保留换行符 */
+        word-wrap: break-word; /* 允许文字到达边缘自动换行 */
+        position: absolute; /* 添加绝对定位 */
+        top: 50%; /* 将文本框定位在容器的中心 */
+        left: 50%; /* 将文本框定位在容器的中心 */
+        transform: translate(-50%, -50%); /* 居中对齐 */
+      }
+    </style>
+  </head>
+  <body>
     <div class="panel bar2">
-      <h2>柱形图</h2>
-      <div class="chart"></div>
-      <div class="panel-footer"></div>
+      <textarea id="transparents-textbox" class="transparents-textbox" placeholder="透明文本框"></textarea>
     </div>
+
+
+
+
     <div class="panel line2">
-      <h2>折线图分数变化</h2>
+      <h2>学校排名</h2>
       <div class="chart"></div>
       <div class="panel-footer"></div>
     </div>
+
+
     <div class="panel pie2">
       <h2>生源分布</h2>
       <div class="chart"></div>
