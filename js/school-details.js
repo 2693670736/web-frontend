@@ -1,219 +1,209 @@
 // 立即执行函数，防止变量污染 (function() {})();
 
-// 柱状图模块1
+// 饼状图
 (function () {
-  // 1.实例化对象
   const myChart = echarts.init(document.querySelector(".bar .chart"));
-  // 2.指定配置项和数据
+  for (let i = 1; i <= 3; i++) {
+    const container = document.querySelector(`.chart${i}`);
+    const myChart = echarts.init(container);
   const option = {
-    color: ['#2f89cf'],
-    // 提示框组件
+    color: ['#60cda0', '#ed8884', '#ff9f7f', '#0096ff', '#9fe6b8', '#32c5e9', '#1d9dff'],
     tooltip: {
-      trigger: 'axis',
-      axisPointer: { // 坐标轴指示器，坐标轴触发有效
-        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)'
+    },
+    legend: {
+      // 垂直居中,默认水平居中
+      // orient: 'vertical',
+
+      bottom: 0,
+      left: 10,
+      // 小图标的宽度和高度
+      itemWidth: 10,
+      itemHeight: 10,
+      // 修改图例组件的文字为 12px
+      textStyle: {
+        color: "rgba(255,255,255,.5)",
+        fontSize: "10"
       }
     },
-    // 修改图表位置大小
-    grid: {
-      left: '0%',
-      top: '10px',
-      right: '0%',
-      bottom: '4%',
-      containLabel: true
-    },
-    // x轴相关配置
-    xAxis: [{
-      type: 'category',
-      data: ["旅游行业", "教育培训", "游戏行业", "医疗行业", "电商行业", "社交行业", "金融行业"],
-      axisTick: {
-        alignWithLabel: true
-      },
-      // 修改刻度标签，相关样式
-      axisLabel: {
-        color: "rgba(255,255,255,0.8)",
-        fontSize: 10
-      },
-      // x轴样式不显示
-      axisLine: {
-        show: false
-      }
-    }],
-    // y轴相关配置
-    yAxis: [{
-      type: 'value',
-      // 修改刻度标签，相关样式
-      axisLabel: {
-        color: "rgba(255,255,255,0.6)",
-        fontSize: 12
-      },
-      // y轴样式修改
-      axisLine: {
-        lineStyle: {
-          color: "rgba(255,255,255,0.6)",
-          width: 2
-        }
-      },
-      // y轴分割线的颜色
-      splitLine: {
-        lineStyle: {
-          color: "rgba(255,255,255,0.1)"
-        }
-      }
-    }],
-    // 系列列表配置
     series: [{
-      name: '直接访问',
-      type: 'bar',
-      barWidth: '35%',
-      // ajax传动态数据
-      data: [200, 300, 300, 900, 1400, 1200, 600],
-      itemStyle: {
-        // 修改柱子圆角
-        barBorderRadius: 5
-      }
+      name: '升学率',
+      type: 'pie',
+      // 设置饼形图在容器中的位置
+      center: ["50%", "42%"],
+      // 修改饼形图大小，第一个为内圆半径，第二个为外圆半径
+      radius: ['30%', '50%'],
+      avoidLabelOverlap: false,
+      // 图形上的文字
+      label: {
+        show: false,
+        position: 'center'
+      },
+      // 链接文字和图形的线
+      labelLine: {
+        show: false
+      },
+      data: []
     }]
   };
-  // 3.把配置项给实例对象
-  myChart.setOption(option);
+  if (i === 1) {
+    option.series[0].data = [
+      { value: 2, name: '保研' },
+      { value: 3, name: '非保研' }
+      
+    ];
+  } else if (i === 2) {
+    option.series[0].data = [
+      { value: 3, name: '出国' },
+      { value: 2, name: '未出国' }
+    ];
+  } else if (i === 3) {
+    option.series[0].data = [
+      { value: 1, name: '就业' },
+      { value: 4, name: '未就业' }
+    ];
+  }
 
-  // 4.让图表随屏幕自适应
+  myChart.setOption(option);
   window.addEventListener('resize', function () {
     myChart.resize();
-  })
+  });}
 })();
 
 // 柱状图模块2
-(function () {
-  // 1.实例化对象
-  const myChart = echarts.init(document.querySelector(".bar2 .chart"));
+// (function () {
+//   // 1.实例化对象
+//   const myChart = echarts.init(document.querySelector(".bar2 .chart"));
 
-  // 声明颜色数组
-  const myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
-  // 2.指定配置项和数据
-  const option = {
-    grid: {
-      top: "10%",
-      left: '22%',
-      bottom: '10%',
-      // containLabel: true
-    },
-    xAxis: {
-      // 不显示x轴相关信息
-      show: false
-    },
-    yAxis: [{
-      type: 'category',
-      // y轴数据反转，与数组的顺序一致
-      inverse: true,
-      // 不显示y轴线和刻度
-      axisLine: {
-        show: false
-      },
-      axisTick: {
-        show: false
-      },
-      // 将刻度标签文字设置为白色
-      axisLabel: {
-        color: "#fff"
-      },
-      data: ["HTML5", "CSS3", "javascript", "VUE", "NODE"]
-    }, {
-      // y轴数据反转，与数组的顺序一致
-      inverse: true,
-      show: true,
-      // 不显示y轴线和刻度
-      axisLine: {
-        show: false
-      },
-      axisTick: {
-        show: false
-      },
-      // 将刻度标签文字设置为白色
-      axisLabel: {
-        color: "#fff"
-      },
-      data: [702, 350, 610, 793, 664]
-    }],
-    series: [{
-      // 第一组柱子（条状）
-      name: '条',
-      type: 'bar',
-      // 柱子之间的距离
-      barCategoryGap: 50,
-      // 柱子的宽度
-      barWidth: 10,
-      // 层级 相当于z-index
-      yAxisIndex: 0,
-      // 柱子更改样式
-      itemStyle: {
-        barBorderRadius: 20,
-        // 此时的color可以修改柱子的颜色
-        color: function (params) {
-          // params 传进来的是柱子的对象
-          // dataIndex 是当前柱子的索引号
-          // console.log(params);
-          return myColor[params.dataIndex];
-        }
-      },
-      data: [70, 34, 60, 78, 69],
-      // 显示柱子内的百分比文字
-      label: {
-        show: true,
-        position: "inside",
-        // {c} 会自动解析为数据（data内的数据）
-        formatter: "{c}%"
-      }
-    },
-      {
-        // 第二组柱子（框状 border）
-        name: '框',
-        type: 'bar',
-        // 柱子之间的距离
-        barCategoryGap: 50,
-        // 柱子的宽度
-        barWidth: 14,
-        // 层级 相当于z-index
-        yAxisIndex: 1,
-        // 柱子修改样式
-        itemStyle: {
-          color: "none",
-          borderColor: "#00c1de",
-          borderWidth: 2,
-          barBorderRadius: 15,
-        },
-        data: [100, 100, 100, 100, 100]
-      }
-    ]
-  };
-  // 3.把配置项给实例对象
-  myChart.setOption(option);
+//   // 声明颜色数组
+//   const myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
+//   // 2.指定配置项和数据
+//   const option = {
+//     grid: {
+//       top: "10%",
+//       left: '22%',
+//       bottom: '10%',
+//       // containLabel: true
+//     },
+//     xAxis: {
+//       // 不显示x轴相关信息
+//       show: false
+//     },
+//     yAxis: [{
+//       type: 'category',
+//       // y轴数据反转，与数组的顺序一致
+//       inverse: true,
+//       // 不显示y轴线和刻度
+//       axisLine: {
+//         show: false
+//       },
+//       axisTick: {
+//         show: false
+//       },
+//       // 将刻度标签文字设置为白色
+//       axisLabel: {
+//         color: "#fff"
+//       },
+//       data: ["HTML5", "CSS3", "javascript", "VUE", "NODE"]
+//     }, {
+//       // y轴数据反转，与数组的顺序一致
+//       inverse: true,
+//       show: true,
+//       // 不显示y轴线和刻度
+//       axisLine: {
+//         show: false
+//       },
+//       axisTick: {
+//         show: false
+//       },
+//       // 将刻度标签文字设置为白色
+//       axisLabel: {
+//         color: "#fff"
+//       },
+//       data: [702, 350, 610, 793, 664]
+//     }],
+//     series: [{
+//       // 第一组柱子（条状）
+//       name: '条',
+//       type: 'bar',
+//       // 柱子之间的距离
+//       barCategoryGap: 50,
+//       // 柱子的宽度
+//       barWidth: 10,
+//       // 层级 相当于z-index
+//       yAxisIndex: 0,
+//       // 柱子更改样式
+//       itemStyle: {
+//         barBorderRadius: 20,
+//         // 此时的color可以修改柱子的颜色
+//         color: function (params) {
+//           // params 传进来的是柱子的对象
+//           // dataIndex 是当前柱子的索引号
+//           // console.log(params);
+//           return myColor[params.dataIndex];
+//         }
+//       },
+//       data: [70, 34, 60, 78, 69],
+//       // 显示柱子内的百分比文字
+//       label: {
+//         show: true,
+//         position: "inside",
+//         // {c} 会自动解析为数据（data内的数据）
+//         formatter: "{c}%"
+//       }
+//     },
+//       {
+//         // 第二组柱子（框状 border）
+//         name: '框',
+//         type: 'bar',
+//         // 柱子之间的距离
+//         barCategoryGap: 50,
+//         // 柱子的宽度
+//         barWidth: 14,
+//         // 层级 相当于z-index
+//         yAxisIndex: 1,
+//         // 柱子修改样式
+//         itemStyle: {
+//           color: "none",
+//           borderColor: "#00c1de",
+//           borderWidth: 2,
+//           barBorderRadius: 15,
+//         },
+//         data: [100, 100, 100, 100, 100]
+//       }
+//     ]
+//   };
+//   // 3.把配置项给实例对象
+//   myChart.setOption(option);
 
-  // 4.让图表随屏幕自适应
-  window.addEventListener('resize', function () {
-    myChart.resize();
-  })
-})();
+//   // 4.让图表随屏幕自适应
+//   window.addEventListener('resize', function () {
+//     myChart.resize();
+//   })
+// })();
 
 // 折线图模块1
 (function () {
   // 年份对应数据
   const yearData = [{
-    year: "2020", // 年份
+    year: "文科", // 年份
     data: [
       // 两个数组是因为有两条线
-      [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
-      [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
+      [610, 620, 580]//,
+      //[40, 64, 191]
     ]
   },
     {
-      year: "2021", // 年份
+      year: "理科", // 年份
       data: [
         // 两个数组是因为有两条线
-        [123, 175, 112, 197, 121, 67, 98, 21, 43, 64, 76, 38],
-        [143, 131, 165, 123, 178, 21, 82, 64, 43, 60, 19, 34]
+        [640, 630, 635]//,
+        //[143, 131, 165]
       ]
     }
+
+
   ];
 
   const myChart = echarts.init(document.querySelector(".line .chart"));
@@ -245,7 +235,7 @@
     xAxis: {
       type: 'category',
       boundaryGap: false, // 去除轴间距
-      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+      data: ['2019年', '2020年', '2021年'],
       // 去除刻度线
       axisTick: {
         show: false
@@ -259,6 +249,8 @@
     },
     yAxis: {
       type: 'value',
+      min: 580, // 设置最小值为500
+      max: 700, // 设置最大值为700
       // 去除刻度线
       axisTick: {
         show: false
@@ -278,15 +270,15 @@
     series: [{
       type: 'line',
       smooth: true, // 圆滑的线
-      name: '新增粉丝',
+      name: '分数线',
       data: yearData[0].data[0]
-    },
-      {
-        type: 'line',
-        smooth: true, // 圆滑的线
-        name: '新增游客',
-        data: yearData[0].data[1]
-      }
+    }//,
+      // {
+      //   type: 'line',
+      //   smooth: true, // 圆滑的线
+      //   name: '新增游客',
+      //   data: yearData[0].data[1]
+      // }
     ]
   };
 
@@ -304,7 +296,8 @@
     // console.log(yearData[$(this).index()]);
     const obj = yearData[$(this).index()];
     option.series[0].data = obj.data[0];
-    option.series[1].data = obj.data[1];
+    //option.series[1].data = obj.data[1];
+    
     // 选中年份高亮
     $('.line h2 a').removeClass('a-active');
     $(this).addClass('a-active');
@@ -352,10 +345,12 @@
           color: "rgba(255,255,255,.2)"
         }
       },
-      data: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "26", "28", "29", "30"]
+      data: ["2019", "2020", "2021"]
     }],
     yAxis: [{
       type: 'value',
+      min: 0, // 设置最小值为0
+      max: 30, // 设置最大值为30
       axisTick: {
         // 不显示刻度线
         show: false
@@ -378,51 +373,10 @@
         }
       }
     }],
-    series: [{
-      name: '邮件营销',
-      type: 'line',
-      smooth: true, // 圆滑的线
-      // 单独修改当前线条的样式
-      lineStyle: {
-        color: "#0184d5",
-        width: 2
-      },
-      // 填充区域渐变透明颜色
-      areaStyle: {
-        color: new echarts.graphic.LinearGradient(
-            0,
-            0,
-            0,
-            1,
-            [{
-              offset: 0,
-              color: "rgba(1, 132, 213, 0.4)" // 渐变色的起始颜色
-            },
-              {
-                offset: 0.8,
-                color: "rgba(1, 132, 213, 0.1)" // 渐变线的结束颜色
-              }
-            ],
-            false
-        ),
-        shadowColor: "rgba(0, 0, 0, 0.1)"
-      },
-      // 拐点设置为小圆点
-      symbol: 'circle',
-      // 设置拐点大小
-      symbolSize: 5,
-      // 开始不显示拐点， 鼠标经过显示
-      showSymbol: false,
-      // 设置拐点颜色以及边框
-      itemStyle: {
-        color: "#0184d5",
-        borderColor: "rgba(221, 220, 107, .1)",
-        borderWidth: 12
-      },
-      data: [30, 40, 30, 40, 30, 40, 30, 60, 20, 40, 30, 40, 30, 40, 30, 40, 30, 60, 20, 40, 30, 40, 30, 40, 30, 40, 20, 60, 50, 40]
-    },
+    series: [
+    
       {
-        name: "转发量",
+        name: "学校排名",
         type: "line",
         smooth: true,
         lineStyle: {
@@ -464,7 +418,7 @@
         },
         // 开始不显示拐点， 鼠标经过显示
         showSymbol: false,
-        data: [130, 10, 20, 40, 30, 40, 80, 60, 20, 40, 90, 40, 20, 140, 30, 40, 130, 20, 20, 40, 80, 70, 30, 40, 30, 120, 20, 99, 50, 20]
+        data: [12, 11, 18]
       }
     ]
   };
@@ -476,11 +430,150 @@
   })
 })();
 
+
+//折线图3
+(function () {
+  // 年份对应数据
+  var yearData = [{
+      year: "文科", // 年份
+      data: [
+        // 两个数组是因为有两条线
+        [650, 640, 670],//计算机
+        [680, 620, 630],//金融
+        [620, 700, 630],//临床医学
+        [650, 610, 620]//电子信息
+      ]
+    },
+    {
+      year: "理科", // 年份
+      data: [
+        // 两个数组是因为有两条线
+        [700, 632, 650],
+        [641, 672, 660],
+        [680, 700, 630],
+        [650, 610, 620]
+      ]
+    }
+  ];
+
+  var myChart = echarts.init(document.querySelector(".line3 .chart"));
+
+  var option = {
+    // 修改两条线的颜色
+    color: ['#00f2f1', '#ed3f35','#ffcc00','#aabbcc'],
+    tooltip: {
+      trigger: 'axis'
+    },
+    // 图例组件
+    legend: {
+      // 当serise 有name值时， legend 不需要写data
+      // 修改图例组件文字颜色
+      textStyle: {
+        color: '#4c9bfd'
+      },
+      right: '10%',
+    },
+    grid: {
+      top: "20%",
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true,
+      show: true, // 显示边框
+      borderColor: '#012f4a' // 边框颜色
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false, // 去除轴间距
+      data: ['2019', '2020', '2021'],
+      // 去除刻度线
+      axisTick: {
+        show: false
+      },
+      axisLabel: {
+        color: "#4c9bfb" // x轴文本颜色
+      },
+      axisLine: {
+        show: false // 去除轴线
+      }
+    },
+    yAxis: {
+      type: 'value',
+      min:600,
+      max:710,
+      // 去除刻度线
+      axisTick: {
+        show: false
+      },
+      axisLabel: {
+        color: "#4c9bfb" // x轴文本颜色
+      },
+      axisLine: {
+        show: false // 去除轴线
+      },
+      splitLine: {
+        lineStyle: {
+          color: "#012f4a"
+        }
+      }
+    },
+    series: [{
+        type: 'line',
+        smooth: true, // 圆滑的线
+        name: '计算机',
+        data: yearData[0].data[0]
+      },
+      {
+        type: 'line',
+        smooth: true, // 圆滑的线
+        name: '金融',
+        data: yearData[0].data[1]
+      },
+      {
+        type: 'line',
+        smooth: true, // 圆滑的线
+        name: '临床医学',
+        data: yearData[0].data[2]
+      },
+      {
+        type: 'line',
+        smooth: true, // 圆滑的线
+        name: '电子信息',
+        data: yearData[0].data[3]
+      }
+    ]
+  };
+
+  myChart.setOption(option);
+
+  // 4.让图表随屏幕自适应
+  window.addEventListener('resize', function () {
+    myChart.resize();
+  })
+
+  // 5.点击切换2020 和 2021 的数据
+  $('.line3 h2 a').on('click', function () {
+    // console.log($(this).index());
+    // 点击a 之后 根据当前a的索引号 找到对应的 yearData 相关对象
+    // console.log(yearData[$(this).index()]);
+    var obj = yearData[$(this).index()];
+    option.series[0].data = obj.data[0];
+    option.series[1].data = obj.data[1];
+    // 选中年份高亮
+    $('.line3 h2 a').removeClass('a-active');
+    $(this).addClass('a-active');
+
+    // 需要重新渲染
+    myChart.setOption(option);
+  })
+})();
+
+
 // 饼形图1
 (function () {
   const myChart = echarts.init(document.querySelector(".pie .chart"));
   const option = {
-    color: ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"],
+    color: ["#1089E7", "#F57474"],
     tooltip: {
       trigger: 'item',
       formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -501,12 +594,12 @@
       }
     },
     series: [{
-      name: '年龄分布',
+      name: '男女比例',
       type: 'pie',
       // 设置饼形图在容器中的位置
       center: ["50%", "42%"],
       // 修改饼形图大小，第一个为内圆半径，第二个为外圆半径
-      radius: ['40%', '60%'],
+      radius: ['50%', '70%'],
       avoidLabelOverlap: false,
       // 图形上的文字
       label: {
@@ -519,23 +612,11 @@
       },
       data: [{
         value: 1,
-        name: "0岁以上"
+        name: "男"
       },
         {
           value: 4,
-          name: "20-29岁"
-        },
-        {
-          value: 2,
-          name: "30-39岁"
-        },
-        {
-          value: 2,
-          name: "40-49岁"
-        },
-        {
-          value: 1,
-          name: "50岁以上"
+          name: "女"
         }
       ]
     }]
@@ -546,6 +627,7 @@
     myChart.resize();
   })
 })();
+
 
 // 饼形图2
 (function () {
@@ -620,5 +702,18 @@
     myChart.resize();
   })
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
