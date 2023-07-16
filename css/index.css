@@ -1,91 +1,96 @@
-/* 全局样式 */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* 头部样式 */
-  header {
-    background-color: #f0f0f0;
-    padding: 10px;
-  }
-  
-  .user-icon {
-    float: left;
-    cursor: pointer;
-  }
-  
-  /* 系统名字样式 */
-  .system-name {
-    text-align: center;
-    padding: 10px 0;
-  }
-  
-  /* 搜索栏样式 */
-  .search-bar {
-    text-align: center;
-    padding: 10px;
-  }
-  
-  #searchInput {
-    width: 500px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  #recommendBtn {
-    padding: 8px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  /* 学校筛选条件样式 */
-  .filter-section {
-    padding: 20px;
-  }
-  
-  .filters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  /* 学校列表样式 */
-  .university-list {
-    padding: 20px;
-  }
-  
-  .university-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .university-item img {
-    width: 80px;
-    height: 80px;
-    margin-right: 10px;
-  }
-  
-  .university-info h3 {
-    margin: 0;
-  }
-  
-  .university-info p {
-    margin: 5px 0;
-  }
-  
-  .university-info a {
+/* 头像部分 */
+.avatar-container {
+    position: relative;
     display: inline-block;
-    margin-top: 10px;
-  }
-  
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 40px;
+}
+
+.sliding-door {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: calc(100% - 28px);
+    height: 0;
+    background-color: #f2f2f2;
+    /* 浅灰色背景 */
+    opacity: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* 添加阴影效果 */
+    transition: opacity 0.3s ease;
+}
+
+.avatar-container:hover .sliding-door {
+    opacity: 1;
+    height: 85px;
+    /* 调整滑动门的高度 */
+    top: calc(100% - 30px);
+    /* 调整滑动门位置 */
+    left: calc(0% + 15px);
+}
+
+.score-info {
+    color: #333;
+    /* 文字颜色为深灰色 */
+    text-align: left;
+    position: absolute;
+    top: 10%;
+    /* 调整文字偏上的位置 */
+    bottom: 10%;
+    left: 55%;
+    transform: translateX(-50%);
+    width: 85%;
+}
+
+.score-info p {
+    font-size: 15px;
+    /* 修改为你需要的大小 */
+}
+
+/* 标题部分 */
+
+h1 {
+    text-align: center;
+    margin-top: -110px;
+    font-size: 60px;
+}
+
+/* 搜索框 */
+#search-form {
+    text-align: center;
+}
+
+.search-box {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-input {
+    padding: 10px;
+    width: 450px;
+}
+
+.search-button,
+.filter-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+
+.search-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.filter-button {
+    background-color: #eee;
+    color: #333;
+    border: none;
+}

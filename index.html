@@ -1,55 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>高考志愿推荐系统</title>
-  <link rel="stylesheet" href="css/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高考志愿分析与推荐系统</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <script src="js/index.js"></script>
 </head>
 <body>
-  <header>
-    <div class="user-icon">User Icon</div>
-  </header>
-
-  <div class="system-name">
-    <h1>高考志愿推荐系统</h1>
-  </div>
-
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="搜索学校">
-    <button id="recommendBtn">智能推荐</button>
-  </div>
-
-  <div class="filter-section">
-    <h2>学校筛选条件</h2>
-    <div class="filters">
-      <select id="provinceFilter">
-        <option value="">选择省份</option>
-        <!-- 省份选项 -->
-      </select>
-      <label>
-        <input type="checkbox" id="is985Filter"> 985
-      </label>
-      <label>
-        <input type="checkbox" id="is211Filter"> 211
-      </label>
+    <!-- 头像部分 -->  
+    <div class="avatar-container">
+        <a href="login.html">
+            <img src="images/map.png" alt="User Avatar" class="avatar">
+        </a>
+        <div class="sliding-door">
+            <div class="score-info">
+                <p>高考分数: <span id="score">666</span></p>
+                <p>排名: <span id="rank">212331</span></p>
+                <p>省份: <span id="province">山西</span></p>
+                <p>文/理科: <span id="subject">理科</span></p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="university-list">
-    <!-- 学校列表 -->
-    <div class="university-item">
-      <img src="university-icon.png" alt="University Icon">
-      <div class="university-info">
-        <h3>学校名称</h3>
-        <p>所在省份</p>
-        <p>985：是 / 211：是</p>
-        <p>推荐指数：xxx</p>
-        <p>最低分数线：xxx</p>
-        <p>招生人数：xxx</p>
-        <a href="school-details.html">查看详情</a>
-      </div>
-    </div>
-  </div>
+    <!-- 标题部分 -->
+    <h1>高考志愿分析与推荐系统</h1> <br>
 
-  <!-- <script src="script.js"></script> -->
+    <!-- 搜索框 -->
+    <form id="search-form">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="请输入搜索关键词" />
+          <button type="submit" class="search-button">搜索</button>
+          <button type="button" class="filter-button">智能筛选</button>
+        </div>
+      </form>
+    
 </body>
 </html>
